@@ -1,19 +1,24 @@
 # bookmark-manager
 
-As a user, 
-so that I can see all the things that I've bookmarked, 
-I want it to show a list of links. 
+```
+As a time-pressed user
+So that I can quickly go to web sites I regularly visit
+I would like to see a list of links on the homepage
 
-As a user, 
-so that I can add to my bookmark list, 
-I want to be able to add new links. 
+As a time-pressed user
+So that I can quickly find web sites I recently bookmarked
+I would like to see links in descending chronological order
 
-As a user, 
-so that I can identify links I have saved, 
-I want to be able to add tags to the links. 
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to my bookmark manager
 
-As a user, 
-so that I can find the link I am looking for, 
-I want to be able to filter the links by tags. 
+As a time-pressed user
+So that I can organise my many links into different categories for ease of search
+I would like to add tags to the links in my bookmark manager
 
+As a time-pressed user
+So that I can quickly find links on a particular topic
+I would like to filter links by tag
+```
 
