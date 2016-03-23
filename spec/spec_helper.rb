@@ -8,6 +8,7 @@ require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 require 'capybara'
 require 'rspec'
 require 'database_cleaner'
+require 'web_helper'
 
 Capybara.app = BookmarkManager
 
