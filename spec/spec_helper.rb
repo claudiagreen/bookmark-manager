@@ -3,7 +3,7 @@ ENV['RACK_ENV'] = 'test'
 require 'capybara/rspec'
 require 'tilt/erb'
 
-require File.join(File.dirname(__FILE__), '..', '/app.rb')
+require File.join(File.dirname(__FILE__), '..', '/app/app.rb')
 
 require 'capybara'
 require 'rspec'
