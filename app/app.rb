@@ -26,6 +26,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/links' do
+    @user = User.find_user(params[:email], params[:password])
     @links = Link.all
     erb :'/links/index'
   end
@@ -64,6 +65,10 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = user.id
       redirect to('/links')
     end
+  end
+
+  get '/login' do
+    erb :login
   end
 
   run! if app_file == $0

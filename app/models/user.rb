@@ -28,4 +28,10 @@ class User
     errors.values.flatten
   end
 
+  def self.find_user(email, password)
+    found_user = User.all(email: email)
+    return found_user[0] if found_user[0].password == password
+    User.create
+  end
+
 end
