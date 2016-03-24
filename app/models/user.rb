@@ -3,6 +3,6 @@ class User
 
   property :id, Serial
   property :email, String
-  property :password, String
+  property :password, BCryptHash
 
 end

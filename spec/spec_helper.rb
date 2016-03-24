@@ -9,6 +9,8 @@ require 'capybara'
 require 'rspec'
 require 'database_cleaner'
 require 'web_helper'
+require './app/data_mapper_setup'
+require 'pry'
 
 Capybara.app = BookmarkManager
 
@@ -20,6 +22,8 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    DataMapper.auto_migrate!
+
   end
 
   config.after(:each) do
