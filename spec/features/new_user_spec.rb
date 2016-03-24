@@ -13,5 +13,7 @@ feature 'password confirmation' do
     fill_in :password, with: "password"
     fill_in :password_confirmation, with: "pissword"
     expect { click_button "submit" }.to_not change(User, :count)
+    expect(current_path).to eq '/users'
+    expect(page).to have_content('Password and confirmation password do not match')
   end
 end
