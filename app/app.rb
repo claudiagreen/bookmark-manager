@@ -56,9 +56,7 @@ class BookmarkManager < Sinatra::Base
   post '/users' do
     user = User.create(email: params[:email], password: params[:password],
     password_confirmation: params[:password_confirmation])
-    flash.now[:error] = []
-    flash.now[:error] << EMAIL_ERROR if user.no_email?
-    flash.now[:error] << PW_ERROR unless user.pw_match?
+    flash.now[:error] = user.error_msgs
     unless user.id
       @email = user.email
       erb :'/users/new'
