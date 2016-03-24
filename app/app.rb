@@ -2,12 +2,17 @@ ENV['RACK_ENV'] ||= "development"
 require 'sinatra/base'
 require 'sinatra/flash'
 require_relative 'data_mapper_setup'
+require './app/models/link'
+require './app/models/user'
+require './app/models/tag'
 require 'bcrypt'
 
 class BookmarkManager < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
-  CONF_ERROR = 'Password and confirmation password do not match'
+  PW_ERROR = 'Password and confirmation password do not match'
+  EMAIL_ERROR = 'Email address required to register'
+
   register Sinatra::Flash
 
 
@@ -51,9 +56,11 @@ class BookmarkManager < Sinatra::Base
   post '/users' do
     user = User.create(email: params[:email], password: params[:password],
     password_confirmation: params[:password_confirmation])
-    # binding.pry
-    if user.id == nil
-      flash.now[:confirmation_error] = CONF_ERROR
+    flash.now[:error] = []
+    flash.now[:error] << EMAIL_ERROR if user.no_email?
+    flash.now[:error] << PW_ERROR unless user.pw_match?
+    unless user.id
+      @email = user.email
       erb :'/users/new'
     else
       session[:user_id] = user.id
