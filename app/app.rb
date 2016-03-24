@@ -26,7 +26,7 @@ class BookmarkManager < Sinatra::Base
   end
 
   get '/links' do
-    @user = User.find_user(params[:email], params[:password])
+    @user = User.find_user(params[:email], params[:password]) if params[:email]
     @links = Link.all
     erb :'/links/index'
   end
