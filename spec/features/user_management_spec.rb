@@ -10,4 +10,8 @@ feature 'User sign up' do
     expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)
   end
 
+  scenario 'with a password that does not match' do
+    expect { sign_up(password_confirmation: 'wrong') }.not_to change(User, :count)  
+  end
+
 end
